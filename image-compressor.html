@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tool Wonder — Image Compressor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #ffffff;
+      --card: #f6fbff;
+      --blue: #0b85ff;
+      --blue-600: #0477e6;
+      --muted:#5b6b7a;
+      --radius:12px;
+      --glass: rgba(11,133,255,0.06);
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:#0b2b3a;margin:0;background:linear-gradient(180deg,#f8fbff 0%,#ffffff 100%);-webkit-font-smoothing:antialiased}
+    .container{max-width:980px;margin:28px auto;padding:18px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blue-600));display:grid;place-items:center;color:white;font-weight:700}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+
+    .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid rgba(11,133,255,0.06);box-shadow:0 6px 24px rgba(11,133,255,0.04);margin-top:18px}
+
+    .uploader{border:2px dashed rgba(11,133,255,0.12);padding:28px;border-radius:12px;text-align:center;cursor:pointer}
+    .uploader.drag{background:linear-gradient(90deg,rgba(11,133,255,0.03),transparent)}
+    .uploader input{display:none}
+    .uploader h3{margin:0 0 6px}
+    .uploader p{margin:0;color:var(--muted);font-size:14px}
+
+    .controls{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .control{flex:1;min-width:160px}
+
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+    select,input[type=range]{width:100%}
+    .row{display:flex;gap:12px;align-items:center}
+
+    .btn{background:linear-gradient(90deg,var(--blue),var(--blue-600));color:white;padding:10px 14px;bor
+
+
