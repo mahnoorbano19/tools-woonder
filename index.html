@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tool Wonder — One Platform. Endless Tools.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent1:linear-gradient(135deg,#4f46e5 0%,#06b6d4 100%);
+      --glass: rgba(255,255,255,0.03);
+      --muted: #a6b0c3;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue';background:radial-gradient(1000px 400px at 10% 10%, rgba(99,102,241,0.08), transparent), linear-gradient(180deg, #061024 0%, #041021 100%);color:#e6eef8}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1150px;margin:0 auto;padding:24px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(3,7,18,0.6), rgba(3,7,18,0.35));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px}
+    .logo .mark{width:38px;height:38px;border-radius:10px;background:var(--accent1);display:inline-grid;place-items:center;color:white;font-weight:800}
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{color:var(--muted);font-weight:500}
+    .cta{display:flex;gap:8px;align-items:center}
+    .btn{padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;border:0}
+    .btn-primary{background:var(--accent1);color:white;box-shadow:0 6px 22px rgba(79,70,229,0.12)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* Mobile */
+    .hamburger{display:none;background:transparent;border:0;color:var(--muted);font-size:20px}
+    .mobile-menu{display:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:56px 0}
+    .hero h1{font-size:40px;line-height:1.02;margin:0 0 12px;font-weight:800}
+    .hero p{color:var(--muted);margin:0 0 20px}
+    .searchbar{background:var(--glass);border-radius:12px;padding:10px;display:flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,0.03)}
+    .searchbar input{flex:1;background:transparent;border:0;padding:12px;outline:none;color:inherit}
+    .hero-panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    .tools-sample{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .tool-card{background:transparent;padding:10px;border-radius:10px;display:flex;gap:10px;align-items:center}
+    .chip{font-size:12px;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+
+    /* Featured */
+    .featured{padding:40px 0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card h4{margin:8px 0 4px}
+    .card p{color:var(--muted);font-size:14px;margin:0}
+
+    /* Benefits */
+    .benefits{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px}
+    .benefit{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;min-width:180px}
+    .benefit h5{margin:8px 0 4px}
+
+    /* Pricing */
+    .pricing{display:flex;gap:18px;margin:36px 0}
+    .price-card{flex:1;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .price-card h3{margin:0 0 8px}
+    .price-list{list-style:none;padding:0;margin:12px 0}
+    .price-list li{color:var(--muted);margin:8px 0}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .testi{background:var(--card);padding:16px;border-radius:12px}
+
+    /* CTA */
+    .cta-mail{display:flex;gap:8px;margin-top:18px}
+    .cta-mail input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,0.03);margin-top:40px;padding:28px 0;color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr 340px}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:800px){
+      .nav ul{display:none}
+      .hamburger{display:inline-block}
+      .mobile-menu{display:block;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);position:absolute;left:0;right:0;top:68px;padding:12px;border-top:1px solid rgba(255,255,255,0.02);display:none}
+      .hero{grid-template-columns:1fr;gap:18px;padding:28px 0}
+      .hero-panel{order:2}
+      .grid{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+    }
+
+    /* small niceties */
+    .muted{color:var(--muted)}
+    .tiny{font-size:13px}
+    .center{display:grid;place-items:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div class="logo"><div class="mark">TW</div>Tool Wonder</div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="cta">
+        <button class="btn btn-ghost tiny">Sign In</button>
+        <button class="btn btn-primary">Get Started</button>
+        <button class="hamburger" id="hamb">☰</button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#">Home</a><br>
+      <a href="#tools">Tools</a><br>
+      <a href="#pricing">Pricing</a><br>
+      <a href="#about">About</a><br>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>One Platform. Endless Tools.</h1>
+        <p class="muted">Create, convert, edit, compress, and optimize files — all in one place.</p>
+
+        <div class="searchbar" style="margin-bottom:14px;">
+          <span>🔍</span>
+          <input id="searchInput" placeholder="Find a tool... (try: Image Compressor)" aria-label="Find a tool">
+        </div>
+
+        <div style="display:flex;gap:12px;margin-bottom:18px">
+          <button class="btn btn-primary">🚀 Start Using Free</button>
+          <button class="btn btn-ghost">👑 Upgrade to Pro</button>
+        </div>
+
+        <div class="benefits">
+          <div class="benefit"><div class="chip">⚡</div><h5>Fast & Easy</h5><p class="muted tiny">Get results in seconds without installs.</p></div>
+          <div class="benefit"><div class="chip">🔒</div><h5>Secure</h5><p class="muted tiny">Files processed safely with privacy-first defaults.</p></div>
+          <div class="benefit"><div class="chip">💻</div><h5>Cross-device</h5><p class="muted tiny">Works on desktop, tablet & mobile.</p></div>
+          <div class="benefit"><div class="chip">🌍</div><h5>No Software</h5><p class="muted tiny">Use tools directly in your browser.</p></div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <h4 class="tiny">Popular Tools</h4>
+        <div class="tools-sample">
+          <div class="tool-card"><div class="chip">🖼️</div><div><strong>Image Compressor</strong><div class="muted tiny">Reduce image size in seconds</div></div></div>
+          <div class="tool-card"><div class="chip">🎥</div><div><strong>Video Converter</strong><div class="muted tiny">MP4, MOV, AVI & more</div></div></div>
+          <div class="tool-card"><div class="chip">📄</div><div><strong>PDF Merger</strong><div class="muted tiny">Merge PDFs instantly</div></div></div>
+          <div class="tool-card"><div class="chip">✏️</div><div><strong>AI Text Editor</strong><div class="muted tiny">Rewrite & improve content</div></div></div>
+        </div>
+
+        <div style="margin-top:12px">
+          <a href="#tools" class="muted tiny">➡ View All Tools</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="tools" class="featured">
+      <h3>Popular Tools</h3>
+      <div class="grid" style="margin-top:12px">
+        <article class="card">
+          <div style="font-size:22px">🖼️</div>
+          <h4>Image Compressor</h4>
+          <p>Reduce image size in seconds while keeping quality.</p>
+        </article>
+        <article class="card">
+          <div style="font-size:22px">🎥</div>
+          <h4>Video Converter</h4>
+          <p>Convert between MP4, MOV, AVI and more.</p>
+        </article>
+        <article class="card">
+          <div style="font-size:22px">📄</div>
+          <h4>PDF Merger</h4>
+          <p>Merge multiple PDFs instantly.</p>
+        </article>
+        <article class="card">
+          <div style="font-size:22px">✏️</div>
+          <h4>AI Text Editor</h4>
+          <p>Fix spelling, grammar, and rewrite text quickly.</p>
+        </article>
+        <article class="card">
+          <div style="font-size:22px">🔊</div>
+          <h4>Audio Trimmer</h4>
+          <p>Cut audio clips, export in seconds.</p>
+        </article>
+        <article class="card">
+          <div style="font-size:22px">🧾</div>
+          <h4>OCR Tool</h4>
+          <p>Extract text from images and scans.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="why" style="margin-top:18px">
+      <h3>Why Choose Tool Wonder?</h3>
+      <div class="benefits" style="margin-top:8px">
+        <div class="benefit"><div class="chip">⚡</div><h5>Fast & Easy</h5><p class="muted tiny">Tools designed for speed and simplicity.</p></div>
+        <div class="benefit"><div class="chip">🔒</div><h5>Secure</h5><p class="muted tiny">Processed on secure servers with privacy in mind.</p></div>
+        <div class="benefit"><div class="chip">💻</div><h5>Any Device</h5><p class="muted tiny">Works on desktop and mobile browsers.</p></div>
+        <div class="benefit"><div class="chip">🌍</div><h5>No Installs</h5><p class="muted tiny">Access tools in your browser instantly.</p></div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <div class="price-card">
+        <h3>FREE</h3>
+        <p class="muted">Perfect for light usage</p>
+        <ul class="price-list">
+          <li>Limited daily usage</li>
+          <li>Access to essential tools</li>
+        </ul>
+        <button class="btn btn-ghost">Get Started</button>
+      </div>
+      <div class="price-card">
+        <h3>PRO</h3>
+        <p class="muted">For power users & teams</p>
+        <ul class="price-list">
+          <li>Unlimited tools</li>
+          <li>Priority speed</li>
+          <li>No ads</li>
+          <li>Premium features</li>
+        </ul>
+        <button class="btn btn-primary">Upgrade to Pro</button>
+      </div>
+    </section>
+
+    <section style="margin-top:18px">
+      <h3>Testimonials</h3>
+      <div class="testimonials" style="margin-top:12px">
+        <div class="testi">
+          <strong>⭐⭐⭐⭐⭐</strong>
+          <p class="muted">“Tool Wonder saves me hours every week! The image compressor and PDF tools are fantastic.”</p>
+        </div>
+        <div class="testi">
+          <strong>⭐⭐⭐⭐</strong>
+          <p class="muted">“Clean UI and everything works online. Perfect for quick edits on the go.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:28px">
+      <h3>Ready to Work Smarter?</h3>
+      <p class="muted">Join thousands of users improving productivity with Tool Wonder.</p>
+      <div class="cta-mail">
+        <input placeholder="Enter your email" aria-label="email" />
+        <button class="btn btn-primary">Get Started Free</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Tools</h4>
+          <p class="muted tiny">Image, Video, PDF, OCR, Audio & more</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <p class="muted tiny">About • Careers • Blog</p>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <p class="muted tiny">Help Center • Contact</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div class="muted tiny">© 2025 Tool Wonder — All Rights Reserved.</div>
+        <div class="muted tiny">Terms • Privacy</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const hamb = document.getElementById('hamb');
+    const mobile = document.getElementById('mobileMenu');
+    hamb.addEventListener('click', ()=>{
+      if(mobile.style.display === 'block') mobile.style.display='none'; else mobile.style.display='block';
+    });
+
+    // Simple search autocomplete
+    const tools = [
+      'Image Compressor','Video Converter','PDF Merger','AI Text Editor','Audio Trimmer','OCR Tool','Image Resizer','PDF Splitter','GIF Maker','Color Extractor'
+    ];
+    const input = document.getElementById('searchInput');
+
+    const ac = document.createElement('div');
+    ac.style.position='absolute'; ac.style.background='var(--card)'; ac.style.border='1px solid rgba(255,255,255,0.04)'; ac.style.borderRadius='8px'; ac.style.padding='8px'; ac.style.marginTop='6px'; ac.style.width='calc(100% - 48px)'; ac.style.display='none';
+    document.body.appendChild(ac);
+
+    input.addEventListener('input', ()=>{
+      const v = input.value.trim().toLowerCase();
+      if(!v){ ac.style.display='none'; return }
+      const matches = tools.filter(t=>t.toLowerCase().includes(v)).slice(0,6);
+      if(matches.length===0){ ac.style.display='none'; return }
+      ac.innerHTML='';
+      matches.forEach(m=>{
+        const el = document.createElement('div');
+        el.textContent = m; el.style.padding='8px'; el.style.cursor='pointer'; el.style.color='var(--muted)';
+        el.addEventListener('click', ()=>{ input.value = m; ac.style.display='none'; });
+        ac.appendChild(el);
+      });
+      // position
+      const rect = input.getBoundingClientRect();
+      ac.style.left = rect.left + 'px';
+      ac.style.top = (rect.bottom + window.scrollY) + 'px';
+      ac.style.display='block';
+    });
+
+    document.addEventListener('click', (e)=>{ if(!input.contains(e.target) && !ac.contains(e.target)) ac.style.display='none' })
+  </script>
+</body>
+</html>
